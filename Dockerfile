@@ -1,9 +1,9 @@
 FROM odoo:18.0
 
 USER root
-# Utilidades/Fonts para PDFs y curl para healthcheck
+# Después (ignora fecha):
 RUN set -eux; \
-    apt-get update; \
+    apt-get -o Acquire::Check-Valid-Until=false -o Acquire::Check-Date=false update; \
     apt-get install -y --no-install-recommends \
         fonts-noto fonts-noto-cjk fonts-noto-color-emoji \
         ca-certificates curl; \
